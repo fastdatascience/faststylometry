@@ -28,7 +28,8 @@ class Corpus:
 
         for author_id in range(len(self.authors)):
             for segment_start in range(0, len(self.tokens[author_id]), segment_length):
-                segment_tokens = self.tokens[segment_start:min((segment_start + segment_length, len(self.tokens)))]
+                segment_tokens = self.tokens[author_id][
+                                 segment_start:min(segment_start + segment_length, len(self.tokens[author_id]))]
                 new_authors.append(self.authors[author_id])
                 new_books.append(self.books[author_id])
                 new_tokens.append(segment_tokens)
