@@ -27,7 +27,7 @@ def get_calibration_curve(corpus):
         burrows_delta = calculate_burrows_delta(tmp_train_corpus, tmp_test_corpus)
 
         ground_truths.extend(list(burrows_delta.index == true_author))
-        delta_values.extend(list(burrows_delta))
+        delta_values.extend(list(burrows_delta.delta))
 
     return np.asarray(ground_truths), np.asarray(delta_values)
 

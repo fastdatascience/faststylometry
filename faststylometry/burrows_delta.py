@@ -87,6 +87,8 @@ def calculate_burrows_delta(train_corpus, test_corpus):
 
     calculate_difference_from_train_corpus(test_corpus, train_corpus)
 
-    df_delta = test_corpus.df_difference.abs().mean(axis=1)
+    series_delta = test_corpus.df_difference.abs().mean(axis=1)
+
+    df_delta = series_delta.to_frame().rename({0: "delta"}, axis=1)
 
     return df_delta
