@@ -38,7 +38,13 @@ stopwords = {"he",
              "yourself", }
 
 
-def tokenise_remove_pronouns_en(text):
+def tokenise_remove_pronouns_en(text: str) -> list:
+    """
+    Tokenise a sentence according to Englsh rules, and remove all pronouns.
+
+    :param text: the original sentence.
+    :return: all non-pronoun tokens.
+    """
     tokens = [tok for tok in nltk.word_tokenize(text.lower()) if is_alpha_pattern.match(tok)]
 
     tokens_without_stopwords = [tok for tok in tokens if tok not in stopwords]

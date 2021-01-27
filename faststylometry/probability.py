@@ -6,11 +6,22 @@ from faststylometry.burrows_delta import calculate_burrows_delta
 from faststylometry.corpus import Corpus
 
 
-def every_item_but_one(l, idx):
+def every_item_but_one(l: list, idx: int) -> list:
+    """
+    Returns every item in the list except for the one at index idx.
+    :param l: a list to process.
+    :param idx: the index to be excluded from the list.
+    :return: the list l minus the item at index idx.
+    """
     return [item for i, item in enumerate(l) if i != idx]
 
 
-def get_calibration_curve(corpus):
+def get_calibration_curve(corpus: Corpus) -> tuple:
+    """
+    Calculates the probability calibration curve of the Burrows' Delta calculation on the train corpus, using a cross-validation technique.
+    :param corpus: the corpus for which we desire a probability calibration curve.
+    :return: two arrays, an array of ground truths (0: different authors, 1: same author), and of Burrows' delta values. These can be used to calibrate a model such as logistic regression, or to generate a ROC curve.
+    """
     ground_truths = []
 
     delta_values = []
@@ -40,7 +51,14 @@ def calibrate(corpus, model=LogisticRegression(class_weight="balanced")):
     corpus.probability_model = model
 
 
-def predict_proba(train_corpus, test_corpus):
+def predict_proba(train_corpus: Corpus, test_corpus: Corpus) -> pd.DataFrame:
+    """
+    Returns the probability that the test corpus is by the same author as the training corpus.
+
+    :param train_corpus: The corpus to serve as a baseline for the word frequency calculations.
+    :param test_corpus: The corpus to compare it with.
+    :return: The probability according to the calibrated model, that the test corpus was by the same author as the train corpus.
+    """
     delta = calculate_burrows_delta(train_corpus, test_corpus)
 
     values = train_corpus.probability_model.predict_proba(np.reshape(delta.to_numpy(), (-1, 1)))[:, 1]
