@@ -35,10 +35,10 @@ def get_calibration_curve(corpus: Corpus) -> tuple:
 
         true_author = tmp_test_corpus.authors[0]
 
-        burrows_delta = calculate_burrows_delta(tmp_train_corpus, tmp_test_corpus)
+        df_delta = calculate_burrows_delta(tmp_train_corpus, tmp_test_corpus)
 
-        ground_truths.extend(list(burrows_delta.index == true_author))
-        delta_values.extend(list(burrows_delta.delta))
+        ground_truths.extend(list(df_delta.index == true_author))
+        delta_values.extend(list(df_delta.iloc[:, 0]))
 
     return np.asarray(ground_truths), np.asarray(delta_values)
 
@@ -59,8 +59,15 @@ def predict_proba(train_corpus: Corpus, test_corpus: Corpus) -> pd.DataFrame:
     :param test_corpus: The corpus to compare it with.
     :return: The probability according to the calibrated model, that the test corpus was by the same author as the train corpus.
     """
-    delta = calculate_burrows_delta(train_corpus, test_corpus)
+    df_delta = calculate_burrows_delta(train_corpus, test_corpus)
 
-    values = train_corpus.probability_model.predict_proba(np.reshape(delta.to_numpy(), (-1, 1)))[:, 1]
+    df_probas = pd.DataFrame()
+    for test_author_idx in range(df_delta.shape[1]):
+        values = train_corpus.probability_model.predict_proba(
+            np.reshape(list(df_delta.iloc[:, test_author_idx]), (-1, 1)))[:,
+                 1]
+        df_probas[df_delta.columns[test_author_idx]] = list(values)
 
-    return pd.DataFrame({"author": delta.index, "proba": values}).set_index("author")
+    df_probas.index = df_delta.index
+
+    return df_probas
