@@ -6,13 +6,13 @@ with open("README.rst", "r") as fh:
 setup(
   name = 'faststylometry',
   packages = ['faststylometry'],
-  version = '0.3',
+  version = '0.4',
   license='MIT', 
   description = 'Calculates Burrows Delta',
   long_description=long_description,
   author = 'Thomas Wood',
   #author_email = 'thomas@fastdatascience.com',
-  url = 'https://freelancedatascientist.net',
+  url = 'https://freelancedatascientist.net/fast-stylometry-tutorial/',
   keywords = ['stylometry', 'nlp', 'burrows delta', 'delta', 'forensic stylometry', 'natural language processing'],
   install_requires=[
           'numpy>=1.18.5',
