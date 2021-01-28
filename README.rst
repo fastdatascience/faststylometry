@@ -6,6 +6,8 @@ By Thomas Wood, https://freelancedatascientist.net, Fast Data Science https://fa
 
 Source code at https://github.com/woodthom2/faststylometry
 
+Tutorial at https://freelancedatascientist.net/fast-stylometry-tutorial/
+
 Python library for calculating the Burrows Delta.
 
 Burrows' Delta is an algorithm for comparing the similarity of the writing styles of documents, known as forensic stylometry https://fastdatascience.com/how-you-can-identify-the-author-of-a-document
