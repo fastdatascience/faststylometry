@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from sklearn.base import BaseEstimator
 from sklearn.linear_model import LogisticRegression
 
 from faststylometry.burrows_delta import calculate_burrows_delta
@@ -43,7 +44,7 @@ def get_calibration_curve(corpus: Corpus) -> tuple:
     return np.asarray(ground_truths), np.asarray(delta_values)
 
 
-def calibrate(corpus, model=LogisticRegression(class_weight="balanced")):
+def calibrate(corpus: Corpus, model: BaseEstimator = LogisticRegression(class_weight="balanced")):
     ground_truths, delta_values = get_calibration_curve(corpus)
 
     model.fit(np.reshape(delta_values, (-1, 1)), ground_truths)
