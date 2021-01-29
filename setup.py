@@ -6,7 +6,7 @@ with open("README.rst", "r") as fh:
 setup(
   name = 'faststylometry',
   packages = ['faststylometry'],
-  version = '0.4',
+  version = '0.5',
   license='MIT', 
   description = 'Calculates Burrows Delta',
   long_description=long_description,
