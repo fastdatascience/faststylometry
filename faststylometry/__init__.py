@@ -2,4 +2,4 @@ from faststylometry.corpus import Corpus
 from faststylometry.util import load_corpus_from_folder
 from faststylometry.en import tokenise_remove_pronouns_en
 from faststylometry.burrows_delta import calculate_burrows_delta
-from faststylometry.probability import predict_proba, calibrate
+from faststylometry.probability import predict_proba, calibrate, get_calibration_curve
