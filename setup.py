@@ -17,7 +17,8 @@ setup(
   install_requires=[
           'numpy>=1.18.5',
           'pandas>=1.1.2',
-          'scikit-learn>=0.23.1'
+          'scikit-learn>=0.23.1',
+          'nltk>=3.5'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',   
