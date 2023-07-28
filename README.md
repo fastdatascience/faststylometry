@@ -4,7 +4,7 @@ By [Thomas Wood](https://freelancedatascientist.net), [Fast Data Science](https:
 
 Source code at https://github.com/woodthom2/faststylometry
 
-Tutorial at https://freelancedatascientist.net/fast-stylometry-tutorial/
+Tutorial at Tutorial at https://fastdatascience.com/fast-stylometry-python-library/
 
 Python library for calculating the Burrows Delta.
 
