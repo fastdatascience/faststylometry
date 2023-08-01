@@ -51,6 +51,12 @@ def load_corpus_from_folder(folder: str, pattern: str = None) -> Corpus:
             if filename.endswith(".txt") and "_" in filename:
                 with open(os.path.join(root, filename), "r", encoding="utf-8") as f:
                     text = f.read()
+                text = text.strip()
+
+                if len(text) == 0:
+                    print ("Warning! Empty document: ", filename)
+                    print ("Skipping...")
+                    continue
                 author, book = re.split("_-_", re.sub(r'\.txt', '', filename))
 
                 corpus.add_book(author, book, text)
