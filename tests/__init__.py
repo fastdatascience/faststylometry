@@ -5,7 +5,7 @@ Copyright (c) 2023 Fast Data Science Ltd (https://fastdatascience.com)
 
 Maintainer: Thomas Wood
 
-Tutorial at https://fastdatascience.com/faststylometry-python-library/
+Tutorial at https://fastdatascience.com/fast-stylometry-python-library/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
