@@ -15,8 +15,6 @@ Source code at https://github.com/fastdatascience/faststylometry
 
 Tutorial at https://fastdatascience.com/fast-stylometry-python-library/
 
-This is a lightweight Python library for finding drug names in a string, otherwise known as named entity recognition (NER) and named entity linking.
-
 Python library for calculating the Burrows Delta.
 
 Burrows' Delta is an algorithm for comparing the similarity of the writing styles of documents, known as [forensic stylometry](https://fastdatascience.com/how-you-can-identify-the-author-of-a-document/).
