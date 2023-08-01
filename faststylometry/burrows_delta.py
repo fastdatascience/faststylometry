@@ -125,7 +125,9 @@ def get_token_proportions(corpus: Corpus):
     Calculate the fraction of words in each author's subcorpus which are equal to each word in our vocabulary.
     :param corpus:  The corpus to run the operation on and store the result in.
     """
-    token_proportions = corpus.df_token_counts_by_author.to_numpy() / corpus.df_total_token_counts_by_author.to_numpy()
+    cols = corpus.df_token_counts_by_author.columns[:-1]
+
+    token_proportions = np.asarray(corpus.df_token_counts_by_author[cols]) / np.asarray(corpus.df_total_token_counts_by_author[["count"]])
 
     corpus.df_token_proportions = pd.DataFrame(token_proportions, columns=corpus.top_tokens,
                                                index=corpus.df_token_counts_by_author.index)
@@ -187,3 +189,4 @@ def calculate_burrows_delta(train_corpus: Corpus, test_corpus: Corpus, vocab_siz
     df_delta = pd.concat(deltas, axis=1)
 
     return df_delta
+
