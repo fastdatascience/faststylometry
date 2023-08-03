@@ -28,6 +28,7 @@ SOFTWARE.
 '''
 
 import operator
+import re
 from collections import Counter
 
 import numpy as np
@@ -36,7 +37,9 @@ import pandas as pd
 from faststylometry import Corpus
 
 
-def get_top_tokens(corpus: Corpus, vocab_size: int) -> list:
+
+
+def get_top_tokens(corpus: Corpus, vocab_size: int, words_to_exclude: set, tok_match_pattern: str) -> list:
     """
     Identify the n highest ranking tokens in the corpus.
 
@@ -50,7 +53,14 @@ def get_top_tokens(corpus: Corpus, vocab_size: int) -> list:
     token_freqs = Counter()
     for token_seq in corpus.tokens:
         for token in token_seq:
-            token_freqs[token] += 1
+            if token not in words_to_exclude:
+                token_freqs[token] += 1
+
+    if tok_match_pattern:
+        re_alpha = re.compile(tok_match_pattern)
+        for tok in list(token_freqs.keys()):
+            if not re_alpha.match(tok):
+                del token_freqs[tok]
 
     corpus.top_tokens = [tok for tok, freq in
                          sorted(token_freqs.items(), key=operator.itemgetter(1), reverse=True)[:vocab_size]]
@@ -127,7 +137,8 @@ def get_token_proportions(corpus: Corpus):
     """
     cols = corpus.df_token_counts_by_author.columns[:-1]
 
-    token_proportions = np.asarray(corpus.df_token_counts_by_author[cols]) / np.asarray(corpus.df_total_token_counts_by_author[["count"]])
+    token_proportions = np.asarray(corpus.df_token_counts_by_author[cols]) / np.asarray(
+        corpus.df_total_token_counts_by_author[["count"]])
 
     corpus.df_token_proportions = pd.DataFrame(token_proportions, columns=corpus.top_tokens,
                                                index=corpus.df_token_counts_by_author.index)
@@ -159,7 +170,8 @@ def calculate_difference_from_train_corpus(test_corpus, train_corpus=None):
         test_corpus.df_difference[i] = train_corpus.df_author_z_scores.sub(test_corpus.df_author_z_scores.iloc[i, :])
 
 
-def calculate_burrows_delta(train_corpus: Corpus, test_corpus: Corpus, vocab_size: int = 50) -> pd.DataFrame:
+def calculate_burrows_delta(train_corpus: Corpus, test_corpus: Corpus, vocab_size: int = 50, words_to_exclude: set = {},
+                            tok_match_pattern: str = r'^[a-z][a-z]+$') -> pd.DataFrame:
     """
     Calculate the Burrows' Delta statistic for the test corpus vs every author's subcorpus in the training corpus.
     :param train_corpus: A corpus of known authors, which we will use as a benchmark to compare to the test corpus by an unknown author.
@@ -167,7 +179,7 @@ def calculate_burrows_delta(train_corpus: Corpus, test_corpus: Corpus, vocab_siz
     :param vocab_size: We will take the top n tokens from the training corpus and use as the vocabulary for the model. Normally 50-100 make sensible values.
     :return: A DataFrame of Burrows' Delta values for each author in the training corpus.
     """
-    get_top_tokens(train_corpus, vocab_size)
+    get_top_tokens(train_corpus, vocab_size, words_to_exclude, tok_match_pattern)
     get_token_counts(train_corpus)
     get_token_counts_by_author(train_corpus)
     get_token_proportions(train_corpus)
@@ -189,4 +201,3 @@ def calculate_burrows_delta(train_corpus: Corpus, test_corpus: Corpus, vocab_siz
     df_delta = pd.concat(deltas, axis=1)
 
     return df_delta
-
