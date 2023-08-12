@@ -57,7 +57,7 @@ def load_corpus_from_folder(folder: str, pattern: str = None) -> Corpus:
                     print ("Warning! Empty document: ", filename)
                     print ("Skipping...")
                     continue
-                author, book = re.split("_-_", re.sub(r'\.txt', '', filename))
+                author, book = re.split("_-_", re.sub(r'\.txt', '', filename), 2)
 
                 corpus.add_book(author, book, text)
     return corpus
