@@ -30,7 +30,7 @@ Tutorial at https://fastdatascience.com/fast-stylometry-python-library/
 * [A useful explanation of the maths and thinking behind Burrows' Delta and how it works](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python#third-stylometric-test-john-burrows-delta-method-advanced)
 
 
-# “💻 Installing Fast Stylometry Python package
+# 💻 Installing the Fast Stylometry Python package
 
 You can install from [PyPI](https://pypi.org/project/faststylometry).
 
