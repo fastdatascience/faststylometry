@@ -70,7 +70,6 @@ setuptools.setup(
           'numpy==1.24.3',
           'pandas==2.0.0',
           'scikit-learn==1.3.0',
-          'nltk==3.7'
       ],
     extras_require={
         "dev": ["check-manifest"],
