@@ -40,6 +40,9 @@ pip install faststylometry
 ```
 
 
+# Getting started
+
+We recommend you follow the walk through notebook [Burrows Delta Walkthrough.ipynb](Burrows Delta Walkthrough.ipynb) in order to understand how the library works.
 
 # Usage examples
 
