@@ -14,19 +14,18 @@
 
 [![PyPI package](https://img.shields.io/badge/pip%20install-faststylometry-brightgreen)](https://pypi.org/project/faststylometry/) [![version number](https://img.shields.io/pypi/v/faststylometry?color=green&label=version)](https://github.com/fastdatascience/faststylometry/releases) [![License](https://img.shields.io/github/license/fastdatascience/faststylometry)](https://github.com/fastdatascience/faststylometry/blob/main/LICENSE)
 
+You can run the walkthrough notebook in [Google Colab](https://colab.research.google.com/github/fastdatascience/faststylometry/blob/main/Burrows%20Delta%20Walkthrough.ipynb) with a single click: <a href="https://colab.research.google.com/github/fastdatascience/faststylometry/blob/main/Burrows%20Delta%20Walkthrough.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 <!-- badges: end -->
 
 # ☄ Fast Stylometry - Burrows Delta NLP technique ☄
 
-Developed by Fast Data Science, https://fastdatascience.com. Fast Data Science develops [products](https://fastdatascience.com/demos/), offers [consulting services](https://fastdatascience.com/case-studies/), and [training courses](https://fastdatascience.com/training-and-upskilling-analytics-teams-in-data-science/) in [natural language processing (NLP)](https://fastdatascience.com/guide-natural-language-processing-nlp/).
+Developed by [**Fast Data Science**](https://fastdatascience.com). Fast Data Science develops [products](https://fastdatascience.com/demos/), offers [consulting services](https://fastdatascience.com/case-studies/), and [training courses](https://fastdatascience.com/training-and-upskilling-analytics-teams-in-data-science/) in [natural language processing (NLP)](https://fastdatascience.com/guide-natural-language-processing-nlp/).
 
 Source code at https://github.com/fastdatascience/faststylometry
 
 Tutorial at https://fastdatascience.com/fast-stylometry-python-library/
 
-This is a Python library for calculating the Burrows Delta.
-
-Burrows' Delta is an algorithm for comparing the similarity of the writing styles of documents, known as [forensic stylometry](https://fastdatascience.com/how-you-can-identify-the-author-of-a-document/).
+**Fast Stylometry** is a Python library for calculating the Burrows' Delta. Burrows' Delta is an algorithm for comparing the similarity of the writing styles of documents, known as [forensic stylometry](https://fastdatascience.com/how-you-can-identify-the-author-of-a-document/).
 
 * [A useful explanation of the maths and thinking behind Burrows' Delta and how it works](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python#third-stylometric-test-john-burrows-delta-method-advanced)
 
@@ -41,7 +40,7 @@ pip install faststylometry
 
 # 🌟 Using Fast Stylometry NLP library for the first time 🌟
 
-⚠️ We recommend you follow the walk through notebook [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb) in order to understand how the library works.
+⚠️ We recommend you follow the walk through notebook titled [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb) in order to understand how the library works. If you don't have the correct environment set up on your machine, then you can run the walkthrough notebook easily using [this link to create a notebook in Google Colab](https://colab.research.google.com/github/fastdatascience/faststylometry/blob/main/Burrows%20Delta%20Walkthrough.ipynb).
 
 # 💡 Usage examples
 
@@ -58,6 +57,7 @@ The [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb)  Jupy
 To create a corpus and add books, the pattern is as follows:
 
 ```
+from faststylometry import Corpus
 corpus = Corpus()
 corpus.add_book("Jane Austen", "Pride and Prejudice", [whole book text])
 ```
@@ -81,7 +81,15 @@ for root, _, files in os.walk(folder):
             corpus.add_book(author, book, text)
 ```
 
+
 ## 💡 Example 1
+
+Download some example data (Project Gutenberg texts) from the Fast Stylometry repository:
+
+```
+from faststylometry import download_examples
+download_examples()
+```
 
 Load a corpus and calculate Burrows' Delta
 
@@ -192,7 +200,7 @@ Wood, T.A., Fast Stylometry [Computer software], Version 1.0.2, accessed at [htt
 ```
 @unpublished{faststylometry,
     AUTHOR = {Wood, T.A.},
-    TITLE  = {Fast Stylometry (Computer software), Version 1.0.2},
+    TITLE  = {Fast Stylometry (Computer software), Version 1.0.3},
     YEAR   = {2023},
     Note   = {To appear},
 }
