@@ -33,10 +33,7 @@ from collections import Counter
 
 import numpy as np
 import pandas as pd
-
 from faststylometry import Corpus
-
-
 
 
 def get_top_tokens(corpus: Corpus, vocab_size: int, words_to_exclude: set, tok_match_pattern: str) -> list:
@@ -101,15 +98,20 @@ def get_token_counts(corpus: Corpus):
         for tok_idx, tok in enumerate(corpus.top_tokens):
             token_counts[idx, tok_idx] = this_work_token_counts.get(tok, 0)
 
-    corpus.df_token_counts = pd.DataFrame(token_counts, columns=corpus.top_tokens)
+    corpus.token_counts = token_counts
+    corpus.total_token_counts = total_token_counts
+    corpus.author_book_combinations = [a + " - " + b for a, b in zip(corpus.authors, corpus.books)]
 
-    corpus.df_token_counts["author"] = corpus.authors
-    author_book_combinations = [a + " - " + b for a, b in zip(corpus.authors, corpus.books)]
-    corpus.df_token_counts["author_book"] = author_book_combinations
-
-    corpus.df_total_token_counts = pd.DataFrame({"count": total_token_counts})
-    corpus.df_total_token_counts["author"] = corpus.authors
-    corpus.df_total_token_counts["author_book"] = author_book_combinations
+    ## OLD LOGIC
+    # corpus.df_token_counts = pd.DataFrame(token_counts, columns=corpus.top_tokens)
+    #
+    # corpus.df_token_counts["author"] = corpus.authors
+    # author_book_combinations = [a + " - " + b for a, b in zip(corpus.authors, corpus.books)]
+    # corpus.df_token_counts["author_book"] = author_book_combinations
+    #
+    # corpus.df_total_token_counts = pd.DataFrame({"count": total_token_counts})
+    # corpus.df_total_token_counts["author"] = corpus.authors
+    # corpus.df_total_token_counts["author_book"] = author_book_combinations
 
 
 def get_token_counts_by_author(corpus: Corpus):
@@ -117,8 +119,17 @@ def get_token_counts_by_author(corpus: Corpus):
     Group the token counts across works by the same author, so we have a token count for each author.
     :param corpus:  The corpus to run the operation on and store the result in.
     """
-    corpus.df_token_counts_by_author = corpus.df_token_counts.groupby("author").sum()
-    corpus.df_total_token_counts_by_author = corpus.df_total_token_counts.groupby("author").sum()
+    corpus.all_unique_authors = sorted(set(corpus.authors))
+    corpus.author_to_author_id = dict([(author, idx) for idx, author in enumerate(corpus.all_unique_authors)])
+    corpus.author_ids = [corpus.author_to_author_id[author_name] for author_name in corpus.authors]
+
+    corpus.token_counts_by_author = np.stack(
+        [np.bincount(corpus.author_ids, corpus.token_counts[:, i]) for i in range(len(corpus.top_tokens))])
+    corpus.total_token_counts_by_author = np.bincount(corpus.author_ids, corpus.total_token_counts)
+
+    # OLD LOGIC
+    # corpus.df_token_counts_by_author = corpus.df_token_counts.groupby("author").sum()
+    # corpus.df_total_token_counts_by_author = corpus.df_total_token_counts.groupby("author").sum()
 
 
 def get_token_counts_by_author_and_book(corpus: Corpus):
@@ -126,8 +137,17 @@ def get_token_counts_by_author_and_book(corpus: Corpus):
     Group the token counts across works by the same author and book, so we have a token count for each book.
     :param corpus:  The corpus to run the operation on and store the result in.
     """
-    corpus.df_token_counts_by_author = corpus.df_token_counts.groupby("author_book").sum()
-    corpus.df_total_token_counts_by_author = corpus.df_total_token_counts.groupby("author_book").sum()
+    corpus.all_unique_authors = sorted(set(corpus.author_book_combinations))
+    corpus.author_to_author_id = dict([(author, idx) for idx, author in enumerate(corpus.all_unique_authors)])
+    corpus.author_ids = [corpus.author_to_author_id[author_name] for author_name in corpus.author_book_combinations]
+
+    corpus.token_counts_by_author = np.stack(
+        [np.bincount(corpus.author_ids, corpus.token_counts[:, i]) for i in range(len(corpus.top_tokens))])
+    corpus.total_token_counts_by_author = np.bincount(corpus.author_ids, corpus.total_token_counts)
+
+    # OLD LOGIC
+    # corpus.df_token_counts_by_author = corpus.df_token_counts.groupby("author_book").sum()
+    # corpus.df_total_token_counts_by_author = corpus.df_total_token_counts.groupby("author_book").sum()
 
 
 def get_token_proportions(corpus: Corpus):
@@ -135,28 +155,25 @@ def get_token_proportions(corpus: Corpus):
     Calculate the fraction of words in each author's subcorpus which are equal to each word in our vocabulary.
     :param corpus:  The corpus to run the operation on and store the result in.
     """
-    cols = corpus.df_token_counts_by_author.columns[:-1]
 
-    token_proportions = np.asarray(corpus.df_token_counts_by_author[cols]) / np.asarray(
-        corpus.df_total_token_counts_by_author[["count"]])
-
-    corpus.df_token_proportions = pd.DataFrame(token_proportions, columns=corpus.top_tokens,
-                                               index=corpus.df_token_counts_by_author.index)
+    corpus.token_proportions = corpus.token_counts_by_author / corpus.total_token_counts_by_author
 
 
-def get_author_z_scores(test_corpus: Corpus, training_corpus: Corpus = None) -> pd.DataFrame:
+def get_author_z_scores(test_corpus: Corpus, train_corpus: Corpus = None) -> pd.DataFrame:
     """
     Calculate the Z-score relating the test corpus to each author's subcorpus in the training corpus.
     :param test_corpus:  The corpus to run the operation on and store the result in.
-    :param training_corpus: The training corpus with a number of authors' subcorpora, which will be compared to the test corpus.
+    :param train_corpus: The training corpus with a number of authors' subcorpora, which will be compared to the test corpus.
     :return: A dataframe of Z-scores for each author in the training corpus.
     """
-    if not training_corpus:
-        training_corpus = test_corpus
-    test_corpus.df_author_z_scores = (
-                                             test_corpus.df_token_proportions - training_corpus.df_token_proportions.mean()) / training_corpus.df_token_proportions.std()
+    if not train_corpus:
+        train_corpus = test_corpus
+    test_corpus.author_z_scores = np.zeros(test_corpus.token_proportions.shape)
+    for i in range(test_corpus.author_z_scores.shape[0]):
+        test_corpus.author_z_scores[i, :] = (test_corpus.token_proportions[i, :] - train_corpus.token_proportions[
+            i].mean()) / train_corpus.token_proportions[i].std(ddof=1)
 
-    return test_corpus.df_author_z_scores
+    return test_corpus.author_z_scores
 
 
 def calculate_difference_from_train_corpus(test_corpus, train_corpus=None):
@@ -165,9 +182,15 @@ def calculate_difference_from_train_corpus(test_corpus, train_corpus=None):
     :param test_corpus:  The corpus to run the operation on and store the result in.
     :param train_corpus: The training corpus with a number of authors' subcorpora, which will be compared to the test corpus.
     """
-    test_corpus.df_difference = [None] * len(test_corpus.df_author_z_scores)
-    for i in range(len(test_corpus.df_author_z_scores)):
-        test_corpus.df_difference[i] = train_corpus.df_author_z_scores.sub(test_corpus.df_author_z_scores.iloc[i, :])
+    test_corpus.difference_matrices = [None] * len(test_corpus.all_unique_authors)
+    for test_author_id in range(len(test_corpus.all_unique_authors)):
+        test_corpus.difference_matrices[test_author_id] = np.zeros(train_corpus.author_z_scores.shape)
+        for col in range(train_corpus.author_z_scores.shape[1]):
+            test_corpus.difference_matrices[test_author_id][:, col] = train_corpus.author_z_scores[:,
+                                                                      col] - test_corpus.author_z_scores[:,
+                                                                             test_author_id]
+
+    test_corpus.difference_matrix = np.stack(test_corpus.difference_matrices)
 
 
 def calculate_burrows_delta(train_corpus: Corpus, test_corpus: Corpus, vocab_size: int = 50, words_to_exclude: set = {},
@@ -193,11 +216,8 @@ def calculate_burrows_delta(train_corpus: Corpus, test_corpus: Corpus, vocab_siz
 
     calculate_difference_from_train_corpus(test_corpus, train_corpus)
 
-    deltas = {}
-    for test_author_idx in range(len(test_corpus.df_author_z_scores)):
-        deltas[test_corpus.df_author_z_scores.index[test_author_idx]] = test_corpus.df_difference[
-            test_author_idx].abs().mean(axis=1)
+    deltas = np.mean(np.abs(test_corpus.difference_matrix), axis=1).T
 
-    df_delta = pd.concat(deltas, axis=1)
+    df_delta = pd.DataFrame(deltas, columns=test_corpus.all_unique_authors, index=train_corpus.all_unique_authors)
 
     return df_delta
