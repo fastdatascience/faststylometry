@@ -39,10 +39,9 @@ You can install from [PyPI](https://pypi.org/project/faststylometry).
 pip install faststylometry
 ```
 
+# 🌟 Using Fast Stylometry for the first time 🌟
 
-# Getting started
-
-We recommend you follow the walk through notebook [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb) in order to understand how the library works.
+⚠️ We recommend you follow the walk through notebook [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb) in order to understand how the library works.
 
 # Usage examples
 
