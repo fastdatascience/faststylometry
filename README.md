@@ -31,7 +31,7 @@ Burrows' Delta is an algorithm for comparing the similarity of the writing style
 * [A useful explanation of the maths and thinking behind Burrows' Delta and how it works](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python#third-stylometric-test-john-burrows-delta-method-advanced)
 
 
-# Installing Fast Stylometry Python package
+# “💻 Installing Fast Stylometry Python package
 
 You can install from [PyPI](https://pypi.org/project/faststylometry).
 
@@ -43,7 +43,7 @@ pip install faststylometry
 
 ⚠️ We recommend you follow the walk through notebook [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb) in order to understand how the library works.
 
-# Usage examples
+# 💡 Usage examples
 
 Demonstration of Burrows' Delta on a small corpus downloaded from Project Gutenberg.
 
@@ -51,7 +51,7 @@ We will test the Burrows' Delta code on two "unknown" texts: Sense and Sensibili
 
 You can get the training corpus by cloning https://github.com/woodthom2/faststylometry, the data is in faststylometry/data.
 
-## Create a corpus
+## 📖 Create a corpus
 
 The [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb)  Jupyter notebook is the best place to start, but here are the basic commands to use the library:
 
@@ -81,7 +81,7 @@ for root, _, files in os.walk(folder):
             corpus.add_book(author, book, text)
 ```
 
-## Example 1
+## 💡 Example 1
 
 Load a corpus and calculate Burrows' Delta
 
@@ -103,7 +103,7 @@ calculate_burrows_delta(train_corpus, test_corpus_sense_and_sensibility)
 
 returns a Pandas dataframe of Burrows' Delta scores
 
-## Example 2
+## 💡 Example 2
 
 Using the probability calibration functionality, you can calculate the probability of two books being by the same author.
 
@@ -115,11 +115,11 @@ predict_proba(train_corpus, test_corpus_sense_and_sensibility)
 
 outputs a Pandas dataframe of probabilities.
 
-# Who to contact
+# ✉️ Who to contact
 
 Thomas Wood at [Fast Data Science](https://fastdatascience.com)
 
-## Contributing to the project
+## 🤝 Contributing to the project
 
 If you'd like to contribute to this project, you can contact us at https://fastdatascience.com/ or make a pull request on our [Github repository](https://github.com/fastdatascience/faststylometry). You can also [raise an issue](https://github.com/fastdatascience/faststylometry/issues). 
 
@@ -150,7 +150,7 @@ tox -e py39
 
 Thanks to GitHub Actions' automated process, you don't need to generate distribution files locally. But if you insist, click to read the "Generate distribution files" section.
 
-### Continuous integration/deployment to PyPI
+### 🤖 Continuous integration/deployment to PyPI
 
 This package is based on the template https://pypi.org/project/example-pypi-package/
 
@@ -161,7 +161,7 @@ This package
 - includes test files in the source distribution
 - uses **setup.cfg** for [version single-sourcing](https://packaging.python.org/guides/single-sourcing-package-version/) (setuptools 46.4.0+)
 
-## Re-releasing the package manually
+## 🧍 Re-releasing the package manually
 
 The code to re-release Harmony on PyPI is as follows:
 
@@ -173,17 +173,17 @@ python setup.py sdist
 twine upload dist/*
 ```
 
-## Who worked on the Fast Stylometry library?
+## 😊 Who worked on the Fast Stylometry library?
 
 The tool was developed:
 
 * Thomas Wood ([Fast Data Science](https://fastdatascience.com))
 
-## License of Fast Stylometry library
+## 📜 License of Fast Stylometry library
 
 MIT License. Copyright (c) 2023 [Fast Data Science](https://fastdatascience.com)
 
-## Citing the Fast Stylometry library
+## ✍️ Citing the Fast Stylometry library
 
 Wood, T.A., Fast Stylometry [Computer software], Version 1.0.2, accessed at [https://fastdatascience.com/fast-stylometry-python-library](https://fastdatascience.com/fast-stylometry-python-library), Fast Data Science Ltd (2023)
 
