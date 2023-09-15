@@ -19,7 +19,7 @@ You can run the walkthrough notebook in [Google Colab](https://colab.research.go
 
 # ☄ Fast Stylometry - Burrows Delta NLP technique ☄
 
-Developed by [**Fast Data Science**](https://fastdatascience.com). Fast Data Science develops [products](https://fastdatascience.com/demos/), offers [consulting services](https://fastdatascience.com/case-studies/), and [training courses](https://fastdatascience.com/training-and-upskilling-analytics-teams-in-data-science/) in [natural language processing (NLP)](https://fastdatascience.com/guide-natural-language-processing-nlp/).
+Developed by [**Fast Data Science**](https://fastdatascience.com). Fast Data Science develops [products](https://fastdatascience.com/demos/), offers [consulting services](https://fastdatascience.com/case-studies/), and [training courses](https://fastdatascience.com/training-and-upskilling-analytics-teams-in-data-science/) in [natural language processing (NLP)](https://fastdatascience.com/guide-natural-language-processing-nlp/). Subscribe to our [blog](https://fastdatascience.com/blog/) for regular news from the NLP universe.
 
 Source code at https://github.com/fastdatascience/faststylometry
 
