@@ -29,9 +29,9 @@ SOFTWARE.
 
 import re
 
-import nltk
+is_number_pattern = re.compile(r'.*\d.*')
 
-is_alpha_pattern = re.compile(r'^\w+$')
+re_words = re.compile(r"\w+")
 
 # pronouns
 stopwords = {"he",
@@ -69,12 +69,14 @@ stopwords = {"he",
 
 def tokenise_remove_pronouns_en(text: str) -> list:
     """
-    Tokenise a sentence according to Englsh rules, and remove all pronouns.
+    Tokenise a sentence according to English rules, and remove all pronouns.
+    Remove all apostrophes since words like don't etc can be written in nonstandard ways.
 
     :param text: the original sentence.
     :return: all non-pronoun tokens.
     """
-    tokens = [tok for tok in nltk.word_tokenize(text.lower()) if is_alpha_pattern.match(tok)]
+    text_normalised = re.sub("['’]", "", text.lower())
+    tokens = [tok for tok in re_words.findall(text_normalised) if not is_number_pattern.match(tok)]
 
     tokens_without_stopwords = [tok for tok in tokens if tok not in stopwords]
 
