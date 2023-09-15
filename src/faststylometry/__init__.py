@@ -29,9 +29,10 @@ SOFTWARE.
 
 __version__ = "1.0.3"
 
-from faststylometry.burrows_delta import calculate_burrows_delta
+
 from faststylometry.corpus import Corpus
-from faststylometry.en import tokenise_remove_pronouns_en
-from faststylometry.examples import download_examples
-from faststylometry.probability import predict_proba, calibrate, get_calibration_curve
 from faststylometry.util import load_corpus_from_folder
+from faststylometry.en import tokenise_remove_pronouns_en
+from faststylometry.burrows_delta import calculate_burrows_delta
+from faststylometry.probability import predict_proba, calibrate, get_calibration_curve
+from faststylometry.examples import download_examples

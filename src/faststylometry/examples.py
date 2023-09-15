@@ -51,7 +51,7 @@ def download_examples():
     data_path = "data"
     is_folder_exists = os.path.exists(data_path)
     if not is_folder_exists:
-        print(f"Creating folder {data_path}.")
+        print(f"Creating folder {data_path} in current working directory.")
         # Create a new directory because it does not exist
         os.makedirs(data_path)
 
@@ -65,13 +65,13 @@ def download_examples():
     url = 'https://raw.githubusercontent.com/fastdatascience/faststylometry/main/data/train_test.zip'
 
     local_file = "data/train_test.zip"
-    print(f"Downloading {url} to {local_file}...")
+    print(f"Downloading {url} to {local_file} in current working directory...")
 
     wget.download(url, out=local_file, bar=bar_custom)
 
-    print(f"Downloaded {url} to {local_file}.\nExtracting...")
+    print(f"Downloaded {url} to {local_file}.\nExtracting to {data_path}...")
 
     with zipfile.ZipFile(local_file, 'r') as zip_ref:
         zip_ref.extractall(data_path)
 
-    print(f"Extracted contents of zip file to {data_path}")
+    print(f"Extracted contents of zip file to {data_path}.")
