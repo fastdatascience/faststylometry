@@ -171,7 +171,7 @@ This package
 
 ## 🧍 Re-releasing the package manually
 
-The code to re-release Harmony on PyPI is as follows:
+The code to re-release Fast Stylometry on PyPI is as follows:
 
 ```
 source activate py311
