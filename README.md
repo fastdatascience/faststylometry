@@ -200,7 +200,7 @@ Wood, T.A., Fast Stylometry [Computer software], Version 1.0.2, accessed at [htt
 ```
 @unpublished{faststylometry,
     AUTHOR = {Wood, T.A.},
-    TITLE  = {Fast Stylometry (Computer software), Version 1.0.3},
+    TITLE  = {Fast Stylometry (Computer software), Version 1.0.4},
     YEAR   = {2023},
     Note   = {To appear},
 }

@@ -67,10 +67,10 @@ setuptools.setup(
     ],
     python_requires=">=3.6",
       install_requires=[
-          'numpy==1.24.3',
-          'pandas==2.1.0',
-          'scikit-learn==1.3.0',
-          'wget==3.2',
+          'numpy<=1.24.3,>=1.18',
+          'pandas<=2.1.0,>=1.5.3',
+          'scikit-learn<=1.3.0,>=1.2.0',
+          'wget>=3.0,<4.0',
       ],
     extras_require={
         "dev": ["check-manifest"],
