@@ -16,7 +16,7 @@
 
 <!-- badges: end -->
 
-# Fast Stylometry - Burrows Delta
+# ☄ Fast Stylometry - Burrows Delta ☄
 
 Developed by Fast Data Science, https://fastdatascience.com
 
@@ -24,7 +24,7 @@ Source code at https://github.com/fastdatascience/faststylometry
 
 Tutorial at https://fastdatascience.com/fast-stylometry-python-library/
 
-Python library for calculating the Burrows Delta.
+This is a Python library for calculating the Burrows Delta.
 
 Burrows' Delta is an algorithm for comparing the similarity of the writing styles of documents, known as [forensic stylometry](https://fastdatascience.com/how-you-can-identify-the-author-of-a-document/).
 
@@ -52,6 +52,8 @@ We will test the Burrows' Delta code on two "unknown" texts: Sense and Sensibili
 You can get the training corpus by cloning https://github.com/woodthom2/faststylometry, the data is in faststylometry/data.
 
 ## Create a corpus
+
+The [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb)  Jupyter notebook is the best place to start, but here are the basic commands to use the library:
 
 To create a corpus and add books, the pattern is as follows:
 
