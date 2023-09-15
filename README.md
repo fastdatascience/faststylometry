@@ -181,12 +181,12 @@ MIT License. Copyright (c) 2023 [Fast Data Science](https://fastdatascience.com)
 
 ## Citing the Fast Stylometry library
 
-Wood, T.A., Fast Stylometry [Computer software], Version 1.0.1, accessed at [https://fastdatascience.com/fast-stylometry-python-library](https://fastdatascience.com/fast-stylometry-python-library), Fast Data Science Ltd (2023)
+Wood, T.A., Fast Stylometry [Computer software], Version 1.0.2, accessed at [https://fastdatascience.com/fast-stylometry-python-library](https://fastdatascience.com/fast-stylometry-python-library), Fast Data Science Ltd (2023)
 
 ```
 @unpublished{faststylometry,
     AUTHOR = {Wood, T.A.},
-    TITLE  = {Fast Stylometry (Computer software), Version 1.0.1},
+    TITLE  = {Fast Stylometry (Computer software), Version 1.0.2},
     YEAR   = {2023},
     Note   = {To appear},
 }
