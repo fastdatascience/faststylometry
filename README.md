@@ -39,7 +39,7 @@ You can install from [PyPI](https://pypi.org/project/faststylometry).
 pip install faststylometry
 ```
 
-# 🌟 Using Fast Stylometry for the first time 🌟
+# 🌟 Using Fast Stylometry NLP library for the first time 🌟
 
 ⚠️ We recommend you follow the walk through notebook [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb) in order to understand how the library works.
 
@@ -173,17 +173,19 @@ python setup.py sdist
 twine upload dist/*
 ```
 
-## 😊 Who worked on the Fast Stylometry library?
+## 😊 Who worked on the Fast Stylometry NLP library?
 
-The tool was developed:
+The tool was developed by:
 
-* Thomas Wood ([Fast Data Science](https://fastdatascience.com))
+* Thomas Wood, Natural Language Processing consultant and data scientist at [Fast Data Science](https://fastdatascience.com).
 
 ## 📜 License of Fast Stylometry library
 
 MIT License. Copyright (c) 2023 [Fast Data Science](https://fastdatascience.com)
 
 ## ✍️ Citing the Fast Stylometry library
+
+If you are undertaking research in AI, NLP, or other areas, and are publishing your findings, I would be grateful if you could please cite the project.
 
 Wood, T.A., Fast Stylometry [Computer software], Version 1.0.2, accessed at [https://fastdatascience.com/fast-stylometry-python-library](https://fastdatascience.com/fast-stylometry-python-library), Fast Data Science Ltd (2023)
 
