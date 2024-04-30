@@ -51,7 +51,7 @@ Demonstration of Burrows' Delta on a small corpus downloaded from Project Gutenb
 
 We will test the Burrows' Delta code on two "unknown" texts: Sense and Sensibility by Jane Austen, and Villette by Charlotte Bronte. Both authors are in our training corpus.
 
-You can get the training corpus by cloning https://github.com/fastdatascience/faststylometry, the data is in faststylometry/data. Or you can call `download_examples()` from Python after importing Fast Stylometry:
+You can get the training corpus by cloning https://github.com/fastdatascience/faststylometry, the data is in `data`. Or you can call `download_examples()` from Python after importing Fast Stylometry:
 
 ```
 from faststylometry import download_examples
@@ -106,11 +106,11 @@ from faststylometry.util import load_corpus_from_folder
 from faststylometry.en import tokenise_remove_pronouns_en
 from faststylometry.burrows_delta import calculate_burrows_delta
 
-train_corpus = load_corpus_from_folder("faststylometry/data/train")
+train_corpus = load_corpus_from_folder("data/train")
 
 train_corpus.tokenise(tokenise_remove_pronouns_en)
 
-test_corpus_sense_and_sensibility = load_corpus_from_folder("faststylometry/data/test", pattern="sense")
+test_corpus_sense_and_sensibility = load_corpus_from_folder("data/test", pattern="sense")
 
 test_corpus_sense_and_sensibility.tokenise(tokenise_remove_pronouns_en)
 
