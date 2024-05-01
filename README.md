@@ -203,15 +203,18 @@ MIT License. Copyright (c) 2023 [Fast Data Science](https://fastdatascience.com)
 
 If you are undertaking research in AI, NLP, or other areas, and are publishing your findings, I would be grateful if you could please cite the project.
 
-Wood, T.A. (2024). Fast Stylometry [Computer software] (1.0.4). Zenodo. https://doi.org/10.5281/zenodo.11096941, accessed at [https://fastdatascience.com/fast-stylometry-python-library](https://fastdatascience.com/fast-stylometry-python-library), Fast Data Science Ltd (2023)
+Wood, T.A., Fast Stylometry [Computer software] (1.0.4). Data Science Ltd. DOI: 10.5281/zenodo.11096941, accessed at [https://fastdatascience.com/fast-stylometry-python-library](https://fastdatascience.com/fast-stylometry-python-library), Fast Data Science (2024)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11096941.svg)](https://doi.org/10.5281/zenodo.11096941)
 
+A BibTeX entry for LaTeX users is:
+
 ```
-@unpublished{faststylometry,
-    AUTHOR = {Wood, T.A.},
-    TITLE  = {Fast Stylometry (Computer software), Version 1.0.4},
-    YEAR   = {2023},
-    Note   = {To appear},
+@software{faststylometry,
+    author = {Wood, T.A.},
+    title  = {Fast Stylometry (Computer software), Version 1.0.4},
+    year   = {2024},
+    url = {https://fastdatascience.com/fast-stylometry-python-library/},
+    doi = {10.5281/zenodo.11096941},
 }
 ```
