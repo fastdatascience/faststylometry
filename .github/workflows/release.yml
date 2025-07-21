@@ -7,6 +7,7 @@ on:
 
 jobs:
   deploy:
+    name: "Build Distribution"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,16 +15,15 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.x"
-      - name: Install dependencies
-        run: |
-          python --version
-          python -m pip install --upgrade pip
-          pip install setuptools wheel twine
-          pip install numpy==2.3.1
+      - name: Install pypa/build
+        run: >-
+          python3 -m
+          pip install
+          build twine
       - name: Build and publish
         env:
           TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
         run: |
-          python setup.py sdist bdist_wheel
+          python3 -m build
           twine upload --repository pypi dist/*

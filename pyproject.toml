@@ -1,3 +1,52 @@
+[project]
+name = "faststylometry"
+version = "1.0.12"
+description = 'Python library for calculating the Burrows Delta.'
+readme = "README.md"
+keywords = ['stylometry', 'nlp', 'burrows delta', 'delta', 'forensic stylometry', 'natural language processing']
+license = { file = "LICENSE" }
+maintainers = [
+    { name = "Thomas Wood", email = "thomas@fastdatascience.com" },
+]
+authors = [
+    { name = "Thomas Wood", email = "thomas@fastdatascience.com" },
+]
+requires-python = ">=3.12,<=3.13.3"
+classifiers = [
+    # see https://pypi.org/classifiers/
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Text Processing :: Linguistic",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Information Technology",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+# core dependencies of harmony
+# this set should be kept minimal!
+dependencies = [
+    "numpy>=2.3.1; python_version >= '3.12'",
+    "pandas>=2.3.1; python_version >= '3.12'",
+    "scikit-learn>=1.7.1; python_version >= '3.12'",
+    "wget>=3.2; python_version >= '3.12'",
+]
+
+[project.optional-dependencies]
+
+# dev - the developer dependency set, for contributors to harmony
+dev = ["check-manifest", "pytest"]
+
+[project.urls]
+"Documentation" = "https://fastdatascience.com/fast-stylometry-python-library",
+"Bug Reports" = "https://github.com/fastdatascience/faststylometry/issues",
+"Source Code" = "https://github.com/fastdatascience/faststylometry",
+
 [build-system]
-requires = ["setuptools>=46.4.0", "wheel", "numpy>=2.3.1"]
+requires = ["setuptools>=46.4.0", "wheel", "twine"]
 build-backend = "setuptools.build_meta"
