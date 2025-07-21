@@ -41,6 +41,27 @@ You can install from [PyPI](https://pypi.org/project/faststylometry).
 pip install faststylometry
 ```
 
+## Troubleshooting the installation
+
+Due to compatibility problems with Numpy, when you install faststylometry==1.0.15, it works with Python 3.12 but you need to downgrade Numpy.
+
+You need Python 3.12 or later.
+
+This is inconvenient because Google Colab runs on 3.11 by default. So anyone running the Colab script needs to work out how to upgrade Python within Colab to get this library to work.
+
+Then you can install with
+
+```
+pip install faststylometry==1.0.15
+pip install numpy==1.26.4
+```
+
+The second command is to downgrade Numpy. We tried to get the library to build so that it runs with Numpy 2.x but I cannot see how to do that. This is still an [open issue](https://github.com/fastdatascience/faststylometry/issues/5) if anyone can see how to make the Pypi package build with upgraded Numpy.
+
+**For anyone coming across this issue**
+
+Please can you check the `pyproject.toml` and `.github` scripts to see how you can make this package build, so that it runs out of the box with Numpy 2.x?
+
 # 🌟 Using Fast Stylometry NLP library for the first time 🌟
 
 ⚠️ We recommend you follow the walk through notebook titled [Burrows Delta Walkthrough.ipynb](Burrows%20Delta%20Walkthrough.ipynb) in order to understand how the library works. If you don't have the correct environment set up on your machine, then you can run the walkthrough notebook easily using [this link to create a notebook in Google Colab](https://colab.research.google.com/github/fastdatascience/faststylometry/blob/main/Burrows%20Delta%20Walkthrough.ipynb).
