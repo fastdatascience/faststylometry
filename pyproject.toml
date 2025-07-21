@@ -1,6 +1,6 @@
 [project]
 name = "faststylometry"
-version = "1.0.14"
+version = "1.0.15"
 description = 'Python library for calculating the Burrows Delta.'
 readme = "README.md"
 keywords = ['stylometry', 'nlp', 'burrows delta', 'delta', 'forensic stylometry', 'natural language processing']
