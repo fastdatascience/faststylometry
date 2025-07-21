@@ -52,5 +52,5 @@ with open("README.md", "w", encoding="utf-8") as f:
 with open("pyproject.toml", "w", encoding="utf-8") as f:
     f.write("\n".join(pyproject_lines))
 
-import os
-os.system(f'git add src/faststylometry/__init__.py CITATION.cff README.md pyproject.toml && git commit -m "Update version to {new_version}"')
+#import os
+#os.system(f'git add src/faststylometry/__init__.py CITATION.cff README.md pyproject.toml && git commit -m "Update version to {new_version}"')

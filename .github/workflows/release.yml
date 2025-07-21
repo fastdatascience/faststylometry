@@ -19,6 +19,7 @@ jobs:
           python --version
           python -m pip install --upgrade pip
           pip install setuptools wheel twine
+          pip install numpy==2.3.1
       - name: Build and publish
         env:
           TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
