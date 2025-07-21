@@ -1,6 +1,6 @@
 [project]
 name = "faststylometry"
-version = "1.0.12"
+version = "1.0.13"
 description = 'Python library for calculating the Burrows Delta.'
 readme = "README.md"
 keywords = ['stylometry', 'nlp', 'burrows delta', 'delta', 'forensic stylometry', 'natural language processing']
@@ -43,9 +43,9 @@ dependencies = [
 dev = ["check-manifest", "pytest"]
 
 [project.urls]
-"Documentation" = "https://fastdatascience.com/fast-stylometry-python-library",
-"Bug Reports" = "https://github.com/fastdatascience/faststylometry/issues",
-"Source Code" = "https://github.com/fastdatascience/faststylometry",
+"Documentation" = "https://fastdatascience.com/fast-stylometry-python-library"
+"Bug Reports" = "https://github.com/fastdatascience/faststylometry/issues"
+"Source Code" = "https://github.com/fastdatascience/faststylometry"
 
 [build-system]
 requires = ["setuptools>=46.4.0", "wheel", "twine"]
