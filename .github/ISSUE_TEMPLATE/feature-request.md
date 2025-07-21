@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Suggest improvements to the Drug Named Entity Recognition Python library
+about: Suggest improvements to the Faststylometry Python library
 title: ''
 labels: enhancement
 assignees: ''
