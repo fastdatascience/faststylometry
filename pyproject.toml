@@ -1,6 +1,6 @@
 [project]
 name = "faststylometry"
-version = "1.0.13"
+version = "1.0.14"
 description = 'Python library for calculating the Burrows Delta.'
 readme = "README.md"
 keywords = ['stylometry', 'nlp', 'burrows delta', 'delta', 'forensic stylometry', 'natural language processing']
@@ -28,7 +28,7 @@ classifiers = [
     "Intended Audience :: Information Technology",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-# core dependencies of harmony
+# core dependencies
 # this set should be kept minimal!
 dependencies = [
     "numpy>=2.3.1; python_version >= '3.12'",
@@ -39,7 +39,7 @@ dependencies = [
 
 [project.optional-dependencies]
 
-# dev - the developer dependency set, for contributors to harmony
+# dev - the developer dependency set, for contributors to faststylometry
 dev = ["check-manifest", "pytest"]
 
 [project.urls]

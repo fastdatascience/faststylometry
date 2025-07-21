@@ -19,11 +19,13 @@ jobs:
         run: >-
           python3 -m
           pip install
+          pip install numpy==2.3.1
           build twine
       - name: Build and publish
         env:
           TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
         run: |
+          pip freeze
           python3 -m build
           twine upload --repository pypi dist/*
