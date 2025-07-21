@@ -3,3 +3,4 @@ include *.md
 include LICENSE
 recursive-include tests test*.py
 include CITATION.cff
+include update.py

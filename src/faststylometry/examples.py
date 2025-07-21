@@ -57,10 +57,10 @@ def download_examples():
 
     if os.path.exists("data/train") and len(os.listdir("data/train")) > 0:
         print("data/train is not empty. If you want to download the example corpus, please delete or rename this folder.")  #
-        return
+        return data_path
     if os.path.exists("data/test") and len(os.listdir("data/test")) > 0:
         print("data/test is not empty. If you want to download the example corpus, please delete or rename this folder.")  #
-        return
+        return data_path
 
     url = 'https://raw.githubusercontent.com/fastdatascience/faststylometry/main/data/train_test.zip'
 
@@ -75,3 +75,5 @@ def download_examples():
         zip_ref.extractall(data_path)
 
     print(f"Extracted contents of zip file to {data_path}.")
+
+    return data_path

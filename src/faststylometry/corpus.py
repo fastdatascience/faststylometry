@@ -47,6 +47,8 @@ class Corpus:
             self.tokens = []
             self.texts = []
 
+        self.probability_model = None # Not calibrated
+
     def add_book(self, author: str, book: str, text: str):
         """
         Add a single book to the corpus. This can only be done if the corpus has not been initialised with books in the constructor.
