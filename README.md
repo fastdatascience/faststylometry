@@ -212,7 +212,7 @@ A BibTeX entry for LaTeX users is:
 ```
 @software{faststylometry,
     author = {Wood, T.A.},
-    title  = {Fast Stylometry (Computer software), Version 1.0.7},
+    title  = {Fast Stylometry (Computer software), Version 1.0.8},
     year   = {2024},
     url = {https://fastdatascience.com/fast-stylometry-python-library/},
     doi = {10.5281/zenodo.11096941},
