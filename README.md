@@ -16,6 +16,11 @@
 ![my badge](https://badgen.net/badge/Status/In%20Development/orange)
 
 [![PyPI package](https://img.shields.io/badge/pip%20install-faststylometry-brightgreen)](https://pypi.org/project/faststylometry/) [![version number](https://img.shields.io/pypi/v/faststylometry?color=green&label=version)](https://github.com/fastdatascience/faststylometry/releases) [![License](https://img.shields.io/github/license/fastdatascience/faststylometry)](https://github.com/fastdatascience/faststylometry/blob/main/LICENSE)
+[![tests](https://github.com/fastdatascience/faststylometry/actions/workflows/test.yml/badge.svg)](https://github.com/fastdatascience/faststylometry/actions/workflows/test.yml)
+[![Current Release Version](https://img.shields.io/github/release/fastdatascience/faststylometry.svg?style=flat-square&logo=github)](https://github.com/fastdatascience/faststylometry/releases)
+[![pypi Version](https://img.shields.io/pypi/v/faststylometry.svg?style=flat-square&logo=pypi&logoColor=white)](https://pypi.org/project/faststylometry/)
+ [![version number](https://img.shields.io/pypi/v/faststylometry?color=green&label=version)](https://github.com/fastdatascience/faststylometry/releases) [![PyPi downloads](https://static.pepy.tech/personalized-badge/faststylometry?period=total&units=international_system&left_color=grey&right_color=orange&left_text=pip%20downloads)](https://pypi.org/project/faststylometry/)
+[![forks](https://img.shields.io/github/forks/fastdatascience/faststylometry)](https://github.com/fastdatascience/faststylometry/forks)
 
 You can run the walkthrough notebook in [Google Colab](https://colab.research.google.com/github/fastdatascience/faststylometry/blob/main/Burrows%20Delta%20Walkthrough.ipynb) with a single click: <a href="https://colab.research.google.com/github/fastdatascience/faststylometry/blob/main/Burrows%20Delta%20Walkthrough.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 <!-- badges: end -->
