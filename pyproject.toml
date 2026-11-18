@@ -48,5 +48,5 @@ dev = ["check-manifest", "pytest"]
 "Source Code" = "https://github.com/fastdatascience/faststylometry"
 
 [build-system]
-requires = ["setuptools>=46.4.0", "wheel", "twine"]
+requires = ["setuptools>=66.1.0", "wheel", "twine"]
 build-backend = "setuptools.build_meta"
